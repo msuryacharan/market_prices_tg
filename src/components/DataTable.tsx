@@ -98,10 +98,10 @@ const DataTable: React.FC<DataTableProps> = ({ data, onProductSelect, selectedPr
                 <th 
                   scope="col" 
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                  onClick={() => handleSort('price_per_kg')}
+                  onClick={() => handleSort('max_price')}
                 >
                   <div className="flex items-center">
-                    Maximum Price (₹/kg) {getSortIcon('price_per_kg')}
+                    Maximum Price (₹/kg) {getSortIcon('max_price')}
                   </div>
                 </th>
                 <th 
@@ -155,13 +155,13 @@ const DataTable: React.FC<DataTableProps> = ({ data, onProductSelect, selectedPr
                     {item.market}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-semibold">₹{item.price_per_kg.toFixed(2)}</div>
+                    <div className="text-sm font-semibold">₹{item.max_price.toFixed(2)}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm">₹{((item.price_per_kg + (item.previous_day_price || 0)) / 2).toFixed(2)}</div>
+                    <div className="text-sm">₹{((item.max_price + item.min_price) / 2).toFixed(2)}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm">₹{item.previous_day_price?.toFixed(2) || '-'}</div>
+                    <div className="text-sm">₹{item.min_price.toFixed(2)}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {format(new Date(item.date), 'dd MMM yyyy')}

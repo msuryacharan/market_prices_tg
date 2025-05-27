@@ -4,8 +4,8 @@ export interface MarketData {
   district: string;
   market: string;
   product: string;
-  price_per_kg: number;
-  price_per_quintal?: number;
+  min_price: number;
+  max_price: number;
   previous_day_price?: number;
   price_change_percentage?: number;
 }

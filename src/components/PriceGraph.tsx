@@ -14,7 +14,8 @@ const PriceGraph: React.FC<PriceGraphProps> = ({ data, product }) => {
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .map(item => ({
       date: format(new Date(item.date), 'dd MMM'),
-      price: item.price_per_kg
+      'Maximum Price': item.max_price,
+      'Minimum Price': item.min_price
     }));
 
   return (
@@ -32,7 +33,15 @@ const PriceGraph: React.FC<PriceGraphProps> = ({ data, product }) => {
             <Legend />
             <Line
               type="monotone"
-              dataKey="price"
+              dataKey="Maximum Price"
+              stroke="#FF9933"
+              strokeWidth={2}
+              dot={{ fill: '#FF9933' }}
+              activeDot={{ r: 8 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="Minimum Price"
               stroke="#138808"
               strokeWidth={2}
               dot={{ fill: '#138808' }}

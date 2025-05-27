@@ -10,10 +10,9 @@ const PriceStatistics: React.FC<PriceStatisticsProps> = ({ data }) => {
   const calculateStats = () => {
     if (data.length === 0) return { max: 0, min: 0, avg: 0 };
     
-    const prices = data.map(item => item.price_per_kg);
-    const max = Math.max(...prices);
-    const min = Math.min(...prices);
-    const avg = prices.reduce((a, b) => a + b, 0) / prices.length;
+    const max = Math.max(...data.map(item => item.max_price));
+    const min = Math.min(...data.map(item => item.min_price));
+    const avg = data.reduce((sum, item) => sum + item.price_per_kg, 0) / data.length;
     
     return { max, min, avg };
   };
