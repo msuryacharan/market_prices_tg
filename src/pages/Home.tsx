@@ -2,7 +2,6 @@ import React from 'react';
 import FilterSection from '../components/FilterSection';
 import DataTable from '../components/DataTable';
 import PriceGraph from '../components/PriceGraph';
-import PriceStatistics from '../components/PriceStatistics';
 import AdBanner from '../components/AdBanner';
 import { MarketData } from '../types';
 
@@ -53,8 +52,6 @@ const Home: React.FC<HomeProps> = ({
         </div>
       ) : (
         <>
-          <PriceStatistics data={filteredData} />
-          
           <DataTable 
             data={filteredData}
             onProductSelect={onProductSelect}
